@@ -24,8 +24,6 @@ public class Unidad : MonoBehaviour
         ataque = stats.ataque;
         armadura = stats.armadura;
         vel_movimiento = stats.vel_movimiento;
-
-        console.write(vida)
     }
 
     // Update is called once per frame
