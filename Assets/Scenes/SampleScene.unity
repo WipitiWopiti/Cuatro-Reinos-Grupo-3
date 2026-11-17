@@ -416,11 +416,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unidad
   stats: {fileID: 11400000, guid: 29858e833a97eb24b87df4c42766e945, type: 2}
+  objetivo: {fileID: 2098238182}
   nombre: 
   tier: 0
   rol: 
   rasgo: 
-  vida: 0
+  vidaActual: 0
   ataque: 0
   armadura: 0
   vel_movimiento: 0
@@ -692,11 +693,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unidad
   stats: {fileID: 11400000, guid: 59f30638bdcd591409dcf939493e94d7, type: 2}
+  objetivo: {fileID: 814826818}
   nombre: 
   tier: 0
   rol: 
   rasgo: 
-  vida: 100
+  vidaActual: 0
   ataque: 0
   armadura: 0
   vel_movimiento: 0

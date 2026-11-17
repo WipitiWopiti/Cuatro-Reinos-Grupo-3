@@ -3,15 +3,18 @@ using UnityEngine;
 public class Unidad : MonoBehaviour
 {
     public UnidadDatos stats;
+    public Unidad objetivo;
 
     public string nombre;
     public int tier;
     public string rol;
     public string rasgo;
-    public int vida;
+    public int vidaActual;
     public int ataque;
     public int armadura;
     public int vel_movimiento;
+
+    public bool muerto = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,15 +23,44 @@ public class Unidad : MonoBehaviour
         tier = stats.tier;
         rol = stats.rol;
         rasgo = stats.rasgo;
-        vida = stats.vida;
+        vidaActual = stats.vida;
         ataque = stats.ataque;
         armadura = stats.armadura;
         vel_movimiento = stats.vel_movimiento;
+
+        combate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void atacar()
+    {
+        Debug.Log("Hola desde atacar");
+        int danio = ataque - objetivo.armadura;
+        objetivo.recibirDanio(danio);
+    }
+
+    void recibirDanio(int danio)
+    {
+        Debug.Log("AU AU");
+        vidaActual -= danio;
+        if (vidaActual <= 0)
+        {
+            vidaActual = 0;
+            
+        }
+    }
+
+    void combate()
+    {
+       while (muerto == false)
+        {
+            Debug.Log("Hola desde combate");
+            atacar();
+        }
     }
 }
