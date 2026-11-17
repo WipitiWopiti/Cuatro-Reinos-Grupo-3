@@ -425,6 +425,7 @@ MonoBehaviour:
   ataque: 0
   armadura: 0
   vel_movimiento: 0
+  muerto: 0
 --- !u!135 &814826819
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -702,6 +703,7 @@ MonoBehaviour:
   ataque: 0
   armadura: 0
   vel_movimiento: 0
+  muerto: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

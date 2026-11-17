@@ -48,16 +48,18 @@ public class Unidad : MonoBehaviour
     {
         Debug.Log("AU AU");
         vidaActual -= danio;
+        Debug.Log("Vida actual de " + nombre + ": " + vidaActual);
         if (vidaActual <= 0)
         {
             vidaActual = 0;
-            
+            muerto = true;
+            Debug.Log("Combate terminado");
         }
     }
 
     void combate()
     {
-       while (muerto == false)
+    while (muerto == false && objetivo.muerto == false)
         {
             Debug.Log("Hola desde combate");
             atacar();
