@@ -13,8 +13,11 @@ public class Unidad : MonoBehaviour
     public int ataque;
     public int armadura;
     public int vel_movimiento;
+    public float vel_ataque;
 
     public bool muerto = false;
+
+    public int equipo = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +30,7 @@ public class Unidad : MonoBehaviour
         ataque = stats.ataque;
         armadura = stats.armadura;
         vel_movimiento = stats.vel_movimiento;
+        vel_ataque = stats.vel_ataque;
 
         combate();
     }
@@ -34,14 +38,17 @@ public class Unidad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (objetivo != null) combate();
     }
 
     void atacar()
     {
-        Debug.Log("Hola desde atacar");
-        int danio = ataque - objetivo.armadura;
-        objetivo.recibirDanio(danio);
+        if (objetivo.equipo != equipo)
+        {
+            Debug.Log("Hola desde atacar");
+            int danio = ataque - objetivo.armadura;
+            objetivo.recibirDanio(danio);
+        }
     }
 
     void recibirDanio(int danio)
