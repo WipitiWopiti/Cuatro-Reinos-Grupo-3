@@ -11,4 +11,5 @@ public class UnidadDatos : ScriptableObject
     public int ataque;
     public int armadura;
     public int vel_movimiento;
+    public float vel_ataque;
 }
