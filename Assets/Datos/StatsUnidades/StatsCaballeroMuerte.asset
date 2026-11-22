@@ -19,4 +19,5 @@ MonoBehaviour:
   vida: 1150
   ataque: 50
   armadura: 46
-  vel_movimiento: 300
+  vel_movimiento: 4
+  vel_ataque: 0

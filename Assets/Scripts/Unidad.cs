@@ -14,6 +14,8 @@ public class Unidad : MonoBehaviour
     public int armadura;
     public int vel_movimiento;
     public float vel_ataque;
+    public float rango_ataque = 0;
+    public float tiempoUltimoAtaque = 0;
 
     public bool muerto = false;
 
@@ -31,45 +33,58 @@ public class Unidad : MonoBehaviour
         armadura = stats.armadura;
         vel_movimiento = stats.vel_movimiento;
         vel_ataque = stats.vel_ataque;
-
-        combate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (objetivo != null) combate();
+        if (objetivo != null && objetivo.muerto == false){
+            combate();
+            moverse();
+        } 
     }
 
     void atacar()
     {
         if (objetivo.equipo != equipo)
         {
-            Debug.Log("Hola desde atacar");
-            int danio = ataque - objetivo.armadura;
+            int danio = Mathf.Max(0, ataque - objetivo.armadura);
             objetivo.recibirDanio(danio);
         }
     }
 
     void recibirDanio(int danio)
-    {
-        Debug.Log("AU AU");
+    {   
         vidaActual -= danio;
         Debug.Log("Vida actual de " + nombre + ": " + vidaActual);
         if (vidaActual <= 0)
         {
             vidaActual = 0;
             muerto = true;
+            Destroy(gameObject);
             Debug.Log("Combate terminado");
         }
     }
 
     void combate()
     {
-    while (muerto == false && objetivo.muerto == false)
+        float distancia = Vector3.Distance(transform.position, objetivo.transform.position);
+        if (distancia <= rango_ataque)
         {
-            Debug.Log("Hola desde combate");
-            atacar();
+            tiempoUltimoAtaque += Time.deltaTime;
+            if (tiempoUltimoAtaque >= 1)
+            {
+                atacar();
+                tiempoUltimoAtaque = 0;
+            }
         }
+    }
+    void moverse()
+    {
+        float distancia = Vector3.Distance(transform.position, objetivo.transform.position);
+        if (distancia > rango_ataque)
+        {
+            transform.position = Vector3.MoveTowards( transform.position, objetivo.transform.position, vel_movimiento * Time.deltaTime);
+        };
     }
 }
